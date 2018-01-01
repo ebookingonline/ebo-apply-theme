@@ -17,5 +17,8 @@
     "psr-4": {
       "Ebooking\\Themes\\Apply": "src"
     }
+  },
+  "extra": {
+    "bootstrap": "Ebooking\\Themes\\Apply\\Bootstrap"
   }
 }

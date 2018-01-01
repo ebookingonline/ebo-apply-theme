@@ -6,12 +6,15 @@
     | TIME   : 11:55 PM
     */
 
+    $viewsDir = __DIR__ . '/views';
     return [
+        'layoutPath' => "{$viewsDir}/layouts",
         'components' => [
-            'view' => [
+            'applyTheme' => ['class' => "Ebooking\\Themes\\Apply\\Apply"],
+            'view'       => [
                 'theme' => [
                     'pathMap' => [
-                        '@app/views' => __DIR__ . '/views'
+                        '@app/views' => $viewsDir
                     ],
                 ],
             ],
