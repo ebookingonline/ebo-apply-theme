@@ -1,2 +1,2 @@
-# ebo-apply-theme
-Apply theme
+# ebo-admin-theme
+Admin panel theme

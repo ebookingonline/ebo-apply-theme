@@ -1,0 +1,21 @@
+{
+  "name": "e-booking/apply-theme",
+  "description": "E-booking admin panel template",
+  "type": "ebo-theme",
+  "version": "1.0.0",
+  "keywords": [
+    "ebo",
+    "ebo-theme"
+  ],
+  "authors": [
+    {
+      "name": "Ata amini",
+      "email": "ata.aminie@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Ebooking\\Themes\\Apply": "src"
+    }
+  }
+}
