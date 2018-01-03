@@ -11,9 +11,9 @@
     /* @var $this \yii\web\View */
     /* @var $content string */
 
-    $bundle = \Ebooking\Themes\Apply\Assets\ApplyAssets::register($this);
+    $bundle = Yii::$app->applyTheme->register($this);
     $themeUrl = $bundle->baseUrl;
-    $homeUrl = \Yii::$app->getHomeUrl();
+    $homeUrl = Yii::$app->getHomeUrl();
     if (!isset($content)) $content = '';
 ?>
 <?php $this->beginPage() ?>

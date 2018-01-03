@@ -23,4 +23,29 @@
 
         const DIRECTION_RTL = 'rtl';
         const DIRECTION_LTR = 'ltr';
+
+        private $assetBundleClass = "Ebooking\\Themes\\Apply\\assets\\ApplyAssets";
+
+        /**
+         * get asset bundle class object
+         * @return \Ebooking\Themes\Apply\assets\ApplyAssets|object
+         */
+        public function getAssetBundle()
+        {
+            $config = [];
+            return \Yii::createObject($this->assetBundleClass, $config);
+        }
+
+        /**
+         * register asset bundle
+         *
+         * @param \yii\base\View|\yii\web\View $view
+         *
+         * @return static
+         */
+        public function register(\yii\web\View $view)
+        {
+            $bundle = $this->getAssetBundle();
+            return $bundle::register($view);
+        }
     }
