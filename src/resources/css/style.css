@@ -1,3 +1,21 @@
 /*
 Custom css
 */
+.nav-icon{
+    margin-left: 0!important;
+}
+
+.nav-caret{
+    opacity: 1;
+    margin-right:inherit;
+}
+
+.sidenav .nav li li a {
+    padding-left: 0.80rem;
+    padding-right: 1.75rem;
+    line-height: 2.2rem;
+}
+
+.sidenav .nav-text {
+    opacity: 1!important;
+}

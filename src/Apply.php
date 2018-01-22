@@ -28,7 +28,9 @@
 
         /**
          * get asset bundle class object
+         *
          * @return \Ebooking\Themes\Apply\assets\ApplyAssets|object
+         * @throws \yii\base\InvalidConfigException
          */
         public function getAssetBundle()
         {
@@ -42,6 +44,7 @@
          * @param \yii\base\View|\yii\web\View $view
          *
          * @return static
+         * @throws \yii\base\InvalidConfigException
          */
         public function register(\yii\web\View $view)
         {
