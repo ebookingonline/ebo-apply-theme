@@ -11,7 +11,11 @@
     /* @var $this \yii\web\View */
     /* @var $content string */
 
-    $bundle = Yii::$app->applyTheme->register($this);
+    /** @var \Ebooking\Themes\Apply\Apply $theme */
+    $theme = Yii::$app->applyTheme;
+
+    /** @var \yii\web\AssetBundle $bundle */
+    $bundle = $theme->setAssetBundleClass(\Ebooking\Themes\Apply\assets\ErrorsPageAsset::class)->register($this);
     $themeUrl = $bundle->baseUrl;
     $homeUrl = Yii::$app->getHomeUrl();
     if (!isset($content)) $content = '';
@@ -35,8 +39,4 @@
     <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="shortcut icon" sizes="196x196" href="<?= $themeUrl; ?>/images/paperplane.svg">
-    <script>
-        var ebooking = ebooking || {};
-        ebooking.wwwUrl = '<?= Yii::$app->getHomeUrl(); ?>';
-    </script>
 </head>

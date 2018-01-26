@@ -33,6 +33,7 @@
             "yii\\bootstrap\\BootstrapAsset",
             "Ebooking\\Themes\\Apply\\assets\\IcomoonIconsAssets",
             "Ebooking\\Themes\\Apply\\assets\\PersianFontSahel",
+            "Ebooking\\Themes\\Apply\\assets\\EbookingJsLibrariesAsset"
         ];
 
         public function init()

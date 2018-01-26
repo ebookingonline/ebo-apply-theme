@@ -27,6 +27,9 @@
             // make apply theme class as singleton
             \Yii::$container->setSingleton("Ebooking\\Themes\\Apply\\Apply");
 
+            // add apply theme alias
+            \Yii::setAlias('@apply-theme', __DIR__);
+
             // merge app config
             $this->applyConfig($app);
         }

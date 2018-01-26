@@ -24,7 +24,7 @@
         const DIRECTION_RTL = 'rtl';
         const DIRECTION_LTR = 'ltr';
 
-        private $assetBundleClass = "Ebooking\\Themes\\Apply\\assets\\ApplyAssets";
+        public $assetBundleClass = "Ebooking\\Themes\\Apply\\assets\\ApplyAssets";
 
         /**
          * get asset bundle class object
@@ -34,15 +34,29 @@
          */
         public function getAssetBundle()
         {
+            // TODO: check user config (theme, font, ...)
             $config = [];
             return \Yii::createObject($this->assetBundleClass, $config);
+        }
+
+        /**
+         * override asset bundle class
+         *
+         * @param $class
+         * @return $this
+         */
+        public function setAssetBundleClass($class)
+        {
+            if (class_exists($class)) {
+                $this->assetBundleClass = $class;
+            }
+            return $this;
         }
 
         /**
          * register asset bundle
          *
          * @param \yii\base\View|\yii\web\View $view
-         *
          * @return static
          * @throws \yii\base\InvalidConfigException
          */

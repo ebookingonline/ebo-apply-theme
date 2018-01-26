@@ -19,7 +19,7 @@
                     <a href="<?= $homeUrl; ?>" class="navbar-brand">
 
                         <img src="<?= $themeUrl; ?>/images/paperplane.svg" alt=".">
-                        <span class="hidden-folded d-inline">Apply</span>
+                        <span class="hidden-folded d-inline"><?= Yii::$app->name; ?></span>
                     </a>
                     <!-- / brand -->
                 </div>
@@ -39,7 +39,7 @@
                                 </li>
                             </ul>
                             <ul class="nav bg">
-                                <?= Yii::$app->services->menuBuilder->getMenu('sidebar-navigation-bar')->render()->toHtml(); ?>
+                                <?= Yii::$app->services->menuBuilder->render('sidebar-navigation-bar'); ?>
                             </ul>
                         </div>
                     </div>
