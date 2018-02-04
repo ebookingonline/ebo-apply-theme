@@ -340,27 +340,17 @@ ebooking.normalize_url = function (url) {
  * @private
  */
 ebooking.messages = function (msgs, delay, type) {
-    if (ebooking.isUndefined(msgs))
+    if (ebooking.isUndefined(msgs)) {
         return;
+    }
 
     var appendMessage = function (msg) {
-        if (type === 'warning')
-            type = 'warn';
-        console.info(msg);
-        /*$.notify(msg, {
-            globalPosition: 'bottom left',
-            className: type,
-            showAnimation: 'fadeIn',
-            hideAnimation: 'fadeOut',
-            autoHideDelay: delay
-        });*/
+        if (notie && ebooking.isObject(notie)) {
+            notie.alert({text: msg, position: 'bottom', type: type});
+        } else {
+            console.log(msg);
+        }
     };
-
-    //validate delay.  Must be a positive integer.
-    delay = parseInt(delay || 6000, 10);
-    if (isNaN(delay) || delay <= 0) {
-        delay = 6000;
-    }
 
     // handle non-arrays
     if (!ebooking.isArray(msgs))
@@ -386,6 +376,25 @@ ebooking.system_message = function (msgs, delay) {
 ebooking.register_error = function (errors, delay) {
     ebooking.messages(errors, delay, "error");
 };
+
+/**
+ * Wrapper function for messages.  Specifies "info" as the type of message
+ * @param {String} errors The error message to display
+ * @param {Number} delay  How long to dispaly the error message (milliseconds)
+ */
+ebooking.register_info = function (errors, delay) {
+    ebooking.messages(errors, delay, "info");
+};
+
+/**
+ * Wrapper function for messages.  Specifies "warning" as the type of message
+ * @param {String} errors The error message to display
+ * @param {Number} delay  How long to dispaly the error message (milliseconds)
+ */
+ebooking.register_warning = function (errors, delay) {
+    ebooking.messages(errors, delay, "warning");
+};
+
 
 /**
  * Informs admin users via a console message about use of a deprecated function or capability

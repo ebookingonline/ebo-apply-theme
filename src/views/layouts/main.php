@@ -6,6 +6,8 @@
     | TIME   : 12:46 AM
     */
 
+    /** @var \Ebooking\Base\View $this */
+
     include dirname(__DIR__) . '/elements/header.php';
 ?>
     <body>
@@ -60,47 +62,23 @@
                         </svg>
                     </a>
                     <!-- Page title -->
-                    <div class="navbar-text nav-title flex" id="pageTitle">Blank</div>
+                    <div class="navbar-text nav-title flex" id="pageTitle"><?= $this->title; ?></div>
                     <ul class="nav flex-row order-lg-2">
-                        <li class="dropdown d-flex align-items-center">
-                            <a href="#" data-toggle="dropdown" class="d-flex align-items-center"
-                               data-pjax-click-state="anchor-empty" aria-expanded="false">
-	    	        <span class="avatar w-32">
-	    	          <img src="../assets/images/a1.jpg" alt="...">
-	    	        </span>
-                            </a>
-
-                        </li>
-                        <!-- Navarbar toggle btn -->
-                        <li class="d-lg-none d-flex align-items-center">
-                            <a href="#" class="mx-2" data-toggle="collapse" data-target="#navbarToggler"
-                               data-pjax-click-state="anchor-empty">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                     viewBox="0 0 512 512">
-                                    <path d="M64 144h384v32H64zM64 240h384v32H64zM64 336h384v32H64z"></path>
-                                </svg>
-                            </a>
-                        </li>
+                        <?= $this->render('/layout/navigation/shortcuts'); ?>
                     </ul>
                 </div>
             </div>
             <!-- Main -->
             <div class="content-main " id="content-main">
                 <div class="p-2">
+                    <div><?= $this->render('/layout/content/before'); ?></div>
                     <?= $content; ?>
                 </div>
             </div>
-            <!-- Footer -->
-            <div class="content-footer white " id="content-footer">
-                <div class="d-flex p-3">
-                    <span class="text-sm text-muted flex">© Copyright. Flatfull</span>
-                    <div class="text-sm text-muted">Version 1.1.0</div>
-                </div>
-            </div>
         </div>
-        <!-- body end -->
-        <?php $this->endBody() ?>
     </div>
+    <!-- body end -->
+    <?php $this->endBody() ?>
     </body>
     </html>
 <?php $this->endPage() ?>

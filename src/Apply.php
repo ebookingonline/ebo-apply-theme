@@ -29,14 +29,16 @@
         /**
          * get asset bundle class object
          *
-         * @return \Ebooking\Themes\Apply\assets\ApplyAssets|object
-         * @throws \yii\base\InvalidConfigException
+         * @return array
          */
-        public function getAssetBundle()
+        public function getAssetBundleConfig()
         {
-            // TODO: check user config (theme, font, ...)
-            $config = [];
-            return \Yii::createObject($this->assetBundleClass, $config);
+            return [
+                'direction' => \Yii::$app->services->locales->getDir(),
+                'theme'     => static::COLOR_WARNING,
+                'color'     => static::COLOR_PRIMARY
+            ];
+
         }
 
         /**
@@ -56,13 +58,18 @@
         /**
          * register asset bundle
          *
-         * @param \yii\base\View|\yii\web\View $view
-         * @return static
+         * @return \yii\web\AssetBundle
          * @throws \yii\base\InvalidConfigException
          */
-        public function register(\yii\web\View $view)
+        public function register()
         {
-            $bundle = $this->getAssetBundle();
-            return $bundle::register($view);
+            // configure asset
+            \Yii::$app->assetManager->bundles[$this->assetBundleClass] = $this->getAssetBundleConfig();
+
+            // register bundle
+            $bundle = \Yii::$app->view->registerAssetBundle($this->assetBundleClass);
+
+            // return object
+            return $bundle;
         }
     }

@@ -11,14 +11,15 @@
     /* @var $this \yii\web\View */
     /* @var $content string */
 
-    $bundle = Yii::$app->applyTheme->register($this);
+    $bundle = Yii::$app->applyTheme->register();
     $themeUrl = $bundle->baseUrl;
-    $homeUrl = Yii::$app->getHomeUrl();
+    $homeUrl = \yii\helpers\Url::toRoute(['/']); // localize
+    $homeUrl = rtrim($homeUrl, '/'). '/';
     if (!isset($content)) $content = '';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?= Yii::$app->language ?>" class="<?= Yii::$app->services->locales->getDir(); ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <title><?= Html::encode($this->title) ?></title>
@@ -37,6 +38,9 @@
     <link rel="shortcut icon" sizes="196x196" href="<?= $themeUrl; ?>/images/paperplane.svg">
     <script>
         var ebooking = ebooking || {};
-        ebooking.wwwUrl = '<?= Yii::$app->getHomeUrl(); ?>';
+        ebooking.config = ebooking.config || {};
+        ebooking.config.wwwroot = '<?= $homeUrl ?>';
+        ebooking.config.tokenParam = '<?= Yii::$app->request->csrfParam; ?>';
+        ebooking.config.token = '<?= Yii::$app->request->csrfToken; ?>';
     </script>
 </head>

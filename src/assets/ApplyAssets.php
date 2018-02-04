@@ -13,17 +13,19 @@
 
     class ApplyAssets extends AssetBundle
     {
-        public $theme = 'success';
-        public $direction = 'rtl';
-        public $color = 'primary';
+        public $theme;
+        public $direction;
+        public $color;
 
         public $css = [
-            'css/app.css'
+            'css/app.css',
+            'libs/notie/dist/notie.css'
         ];
 
         public $js = [
             'libs/pace-progress/pace.min.js',
             'libs/pjax/pjax.js',
+            'libs/notie/dist/notie.min.js',
 
             'js/nav.js'
         ];

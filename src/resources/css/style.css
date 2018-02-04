@@ -1,13 +1,13 @@
 /*
 Custom css
 */
-.nav-icon{
-    margin-left: 0!important;
+.nav-icon {
+    margin-left: 0 !important;
 }
 
-.nav-caret{
+.nav-caret {
     opacity: 1;
-    margin-right:inherit;
+    margin-right: inherit;
 }
 
 .sidenav .nav li li a {
@@ -17,5 +17,20 @@ Custom css
 }
 
 .sidenav .nav-text {
-    opacity: 1!important;
+    opacity: 1 !important;
+}
+
+.alert-dismissible .close {
+    cursor: pointer;
+    padding: 0.6rem 1.25rem !important;
+}
+
+.rtl .alert[role="alert"] {
+    padding-right: 50px !important;
+}
+
+.notie-textbox {
+    display: block;
+    margin-right: inherit !important;
+    text-align: center;
 }

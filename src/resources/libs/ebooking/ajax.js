@@ -33,6 +33,8 @@ ebooking.ajax = function (url, options) {
         if (responseText && responseText.messages) {
             ebooking.register_error(responseText.messages.error);
             ebooking.system_message(responseText.messages.success);
+            ebooking.register_info(responseText.messages.info);
+            ebooking.register_warning(responseText.messages.warning);
         }
 
         custom_complete(json, two, three, four);
@@ -108,7 +110,7 @@ ebooking.ajax.handleOptions = function (url, options) {
     }
 
     var headers = {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        'X-CSRF-TOKEN': ebooking.config.token || $('meta[name="csrf-token"]').attr('content')
     };
 
     options.headers = headers;
