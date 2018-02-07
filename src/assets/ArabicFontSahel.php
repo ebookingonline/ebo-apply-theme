@@ -11,15 +11,15 @@
     use yii\web\AssetBundle;
 
     /**
-     * Class PersianFontSahel
+     * Class ArabicFontSahel
      *
      * @package Ebooking\Themes\Apply\assets
      */
-    class PersianFontSahel extends AssetBundle
+    class ArabicFontSahel extends AssetBundle
     {
         // style files
         public $css = [
-            "fonts/sahel/sahel.css"
+            "fonts/droid/droid.css"
         ];
 
         /** @inheritdoc */

@@ -16,6 +16,7 @@
         public $theme;
         public $direction;
         public $color;
+        public $language;
 
         public $css = [
             'css/app.css',
@@ -34,7 +35,6 @@
             "yii\\web\\JqueryAsset",
             "yii\\bootstrap\\BootstrapAsset",
             "Ebooking\\Themes\\Apply\\assets\\IcomoonIconsAssets",
-            "Ebooking\\Themes\\Apply\\assets\\PersianFontSahel",
             "Ebooking\\Themes\\Apply\\assets\\EbookingJsLibrariesAsset"
         ];
 
@@ -51,8 +51,16 @@
             if ($this->direction === 'rtl')
                 $this->css[] = "css/app.rtl.css";
 
+            // add sahel font
+            if (strtolower($this->language) == 'fa')
+                $this->depends[] = "Ebooking\\Themes\\Apply\\assets\\PersianFontSahel";
+
+            // add droid font
+            if (strtolower($this->language) == 'ar')
+                $this->depends[] = "Ebooking\\Themes\\Apply\\assets\\ArabicFontSahel";
+
             // add custom style at end
-            $this->css[] = 'css/style.css';
+            $this->css[] = 'css/customize.css';
 
             // resetting BootstrapAsset
             \Yii::$app->assetManager->bundles['yii\bootstrap\BootstrapAsset'] = [

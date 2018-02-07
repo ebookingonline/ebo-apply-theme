@@ -36,7 +36,8 @@
             return [
                 'direction' => \Yii::$app->services->locales->getDir(),
                 'theme'     => static::COLOR_WARNING,
-                'color'     => static::COLOR_PRIMARY
+                'color'     => static::COLOR_PRIMARY,
+                'language'      => \Yii::$app->language
             ];
 
         }
