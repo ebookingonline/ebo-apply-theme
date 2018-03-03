@@ -13,16 +13,16 @@
 
     $bundle = Yii::$app->applyTheme->register();
     $themeUrl = $bundle->baseUrl;
-    $homeUrl = \yii\helpers\Url::toRoute(['/']); // localize
-    $homeUrl = rtrim($homeUrl, '/'). '/';
-    if (!isset($content)) $content = '';
+    $homeUrl = \yii\helpers\Url::toRoute( ['/'] ); // localize
+    $homeUrl = rtrim( $homeUrl , '/' ) . '/';
+    if ( !isset( $content ) ) $content = '';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" class="<?= Yii::$app->services->locales->getDir(); ?>">
+<html lang="<?= Yii::$app->language ?>" class="<?= Yii::$app->services->locales->getCurrent()->getDir(); ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode( $this->title ) ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <?php $this->head() ?>

@@ -18,6 +18,7 @@ Custom css
 
 .sidenav .nav-text {
     opacity: 1 !important;
+    line-height: 1.5rem;
 }
 
 .alert-dismissible .close {
@@ -33,4 +34,12 @@ Custom css
     display: block;
     margin-right: inherit !important;
     text-align: center;
+}
+
+.dropdown-item.language-picker-item{
+    padding: 0.25rem 0.8rem!important;
+}
+
+.dropdown-item.language-picker-item .language-picker-name{
+    padding: 0 6px;
 }
