@@ -23,10 +23,10 @@
     function init() {
         var url = window.location.pathname.split('/');
         if (url.length > 0) url = url[url.length - 1];
-        $('#aside .active').removeClass('active');
-        $('#aside a').filter(function () {
-            return url == $(this).attr('href');
-        }).parents('li').addClass('active');
+        //$('#aside .active').removeClass('active');
+        //$('#aside a').filter(function () {
+        //    return url == $(this).attr('href');
+        //}).parents('li').addClass('active');
     }
 
     init();

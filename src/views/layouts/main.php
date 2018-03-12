@@ -41,7 +41,7 @@
                                 </li>
                             </ul>
                             <ul class="nav bg">
-                                <?= Yii::$app->services->menuBuilder->render('sidebar-navigation-bar'); ?>
+                                <?= $this->render('/layout/navigation/sidebar-menu'); ?>
                             </ul>
                         </div>
                     </div>

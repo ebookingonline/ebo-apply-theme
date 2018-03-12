@@ -19,6 +19,16 @@ Custom css
 .sidenav .nav-text {
     opacity: 1 !important;
     line-height: 1.5rem;
+    padding: 0.20rem 0;
+}
+
+.sidenav .nav-icon{
+    height: 1.8rem;
+    width: 2rem;
+}
+
+.sidenav .nav li > a{
+    padding: 0 0.8rem;
 }
 
 .alert-dismissible .close {
