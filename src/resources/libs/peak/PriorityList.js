@@ -2,7 +2,7 @@
  * Priority lists allow you to create an indexed list that can be iterated through in a specific
  * order.
  */
-ebooking.PriorityList = function () {
+smart.PriorityList = function () {
     this.length = 0;
     this.priorities_ = [];
 };
@@ -15,7 +15,7 @@ ebooking.PriorityList = function () {
  *
  * @return {Void}
  */
-ebooking.PriorityList.prototype.insert = function (obj, opt_priority) {
+smart.PriorityList.prototype.insert = function (obj, opt_priority) {
     var priority = 500;
     if (arguments.length == 2 && opt_priority !== undefined) {
         priority = parseInt(opt_priority, 10);
@@ -23,7 +23,7 @@ ebooking.PriorityList.prototype.insert = function (obj, opt_priority) {
 
     priority = Math.max(priority, 0);
 
-    if (ebooking.isUndefined(this.priorities_[priority])) {
+    if (smart.isUndefined(this.priorities_[priority])) {
         this.priorities_[priority] = [];
     }
 
@@ -40,8 +40,8 @@ ebooking.PriorityList.prototype.insert = function (obj, opt_priority) {
  *                            Array.prototype.every() for details.
  * @return {Object}
  */
-ebooking.PriorityList.prototype.forEach = function (callback) {
-    ebooking.assertTypeOf('function', callback);
+smart.PriorityList.prototype.forEach = function (callback) {
+    smart.assertTypeOf('function', callback);
 
     var index = 0;
 
@@ -63,8 +63,8 @@ ebooking.PriorityList.prototype.forEach = function (callback) {
  *                            Array.prototype.every() for details.
  * @return {Object}
  */
-ebooking.PriorityList.prototype.every = function (callback) {
-    ebooking.assertTypeOf('function', callback);
+smart.PriorityList.prototype.every = function (callback) {
+    smart.assertTypeOf('function', callback);
 
     var index = 0;
 
@@ -81,7 +81,7 @@ ebooking.PriorityList.prototype.every = function (callback) {
  * @param {Object} obj The object to remove.
  * @return {Void}
  */
-ebooking.PriorityList.prototype.remove = function (obj) {
+smart.PriorityList.prototype.remove = function (obj) {
     this.priorities_.forEach(function (elems) {
         var index;
         while ((index = elems.indexOf(obj)) !== -1) {

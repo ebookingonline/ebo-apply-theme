@@ -6,7 +6,7 @@
     | TIME   : 01:12 AM
     */
 
-    namespace Ebooking\Themes\Apply\assets;
+    namespace Smart\Themes\Apply\assets;
 
 
     use yii\web\AssetBundle;
@@ -34,8 +34,8 @@
         public $depends = [
             "yii\\web\\JqueryAsset",
             "yii\\bootstrap\\BootstrapAsset",
-            "Ebooking\\Themes\\Apply\\assets\\IcomoonIconsAssets",
-            "Ebooking\\Themes\\Apply\\assets\\EbookingJsLibrariesAsset"
+            "Smart\\Themes\\Apply\\assets\\IcomoonIconsAssets",
+            "Smart\\Themes\\Apply\\assets\\SmartJsLibrariesAsset"
         ];
 
         public function init()
@@ -53,11 +53,11 @@
 
             // add sahel font
             if (strtolower($this->language) == 'fa')
-                $this->depends[] = "Ebooking\\Themes\\Apply\\assets\\PersianFontSahel";
+                $this->depends[] = "Smart\\Themes\\Apply\\assets\\PersianFontSahel";
 
             // add droid font
             if (strtolower($this->language) == 'ar')
-                $this->depends[] = "Ebooking\\Themes\\Apply\\assets\\ArabicFontSahel";
+                $this->depends[] = "Smart\\Themes\\Apply\\assets\\ArabicFontSahel";
 
             // add custom style at end
             $this->css[] = 'css/customize.css';

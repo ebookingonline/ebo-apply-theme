@@ -2,14 +2,14 @@
  * Javascript hook interface
  */
 
-ebooking.provide('ebooking.config.hooks');
-ebooking.provide('ebooking.config.instant_hooks');
-ebooking.provide('ebooking.config.triggered_hooks');
+smart.provide('smart.config.hooks');
+smart.provide('smart.config.instant_hooks');
+smart.provide('smart.config.triggered_hooks');
 
 /**
  * Registers a hook handler with the event system.
  *
- * For best results, depend on the ebooking/ready module, so plugins will have been booted.
+ * For best results, depend on the smart/ready module, so plugins will have been booted.
  *
  * The special keyword "all" can be used for either the name or the type or both
  * and means to call that handler for all of those hooks.
@@ -23,25 +23,25 @@ ebooking.provide('ebooking.config.triggered_hooks');
  * @param {Number}   priority Priority to call the event handler
  * @return {Boolean}
  */
-ebooking.register_hook_handler = function (name, type, handler, priority) {
-    ebooking.assertTypeOf('string', name);
-    ebooking.assertTypeOf('string', type);
-    ebooking.assertTypeOf('function', handler);
+smart.register_hook_handler = function (name, type, handler, priority) {
+    smart.assertTypeOf('string', name);
+    smart.assertTypeOf('string', type);
+    smart.assertTypeOf('function', handler);
 
     if (!name || !type) {
         return false;
     }
 
-    var hooks = ebooking.config.hooks;
+    var hooks = smart.config.hooks;
 
-    ebooking.provide([name, type], hooks);
+    smart.provide([name, type], hooks);
 
-    if (!(hooks[name][type] instanceof ebooking.PriorityList)) {
-        hooks[name][type] = new ebooking.PriorityList();
+    if (!(hooks[name][type] instanceof smart.PriorityList)) {
+        hooks[name][type] = new smart.PriorityList();
     }
 
     // call if instant and already triggered.
-    if (ebooking.is_instant_hook(name, type) && ebooking.is_triggered_hook(name, type)) {
+    if (smart.is_instant_hook(name, type) && smart.is_triggered_hook(name, type)) {
         handler(name, type, null, null);
     }
 
@@ -72,30 +72,30 @@ ebooking.register_hook_handler = function (name, type, handler, priority) {
  *
  * @return {Boolean}
  */
-ebooking.trigger_hook = function (name, type, params, value) {
-    ebooking.assertTypeOf('string', name);
-    ebooking.assertTypeOf('string', type);
+smart.trigger_hook = function (name, type, params, value) {
+    smart.assertTypeOf('string', name);
+    smart.assertTypeOf('string', type);
 
     // mark as triggered
-    ebooking.set_triggered_hook(name, type);
+    smart.set_triggered_hook(name, type);
 
     // default to null if unpassed
-    value = !ebooking.isNullOrUndefined(value) ? value : null;
+    value = !smart.isNullOrUndefined(value) ? value : null;
 
-    var hooks = ebooking.config.hooks,
+    var hooks = smart.config.hooks,
         tempReturnValue = null,
         returnValue = value,
         callHookHandler = function (handler) {
             tempReturnValue = handler(name, type, params, returnValue);
-            if (!ebooking.isNullOrUndefined(tempReturnValue)) {
+            if (!smart.isNullOrUndefined(tempReturnValue)) {
                 returnValue = tempReturnValue;
             }
         };
 
-    ebooking.provide([name, type], hooks);
-    ebooking.provide(['all', type], hooks);
-    ebooking.provide([name, 'all'], hooks);
-    ebooking.provide(['all', 'all'], hooks);
+    smart.provide([name, type], hooks);
+    smart.provide(['all', type], hooks);
+    smart.provide([name, 'all'], hooks);
+    smart.provide(['all', 'all'], hooks);
 
     var hooksList = [];
 
@@ -114,7 +114,7 @@ ebooking.trigger_hook = function (name, type, params, value) {
     hooksList.push(hooks['all']['all']);
 
     hooksList.every(function (handlers) {
-        if (handlers instanceof ebooking.PriorityList) {
+        if (handlers instanceof smart.PriorityList) {
             handlers.forEach(callHookHandler);
         }
         return true;
@@ -136,11 +136,11 @@ ebooking.trigger_hook = function (name, type, params, value) {
  * @param {String} type The hook type.
  * @return {Number} integer
  */
-ebooking.register_instant_hook = function (name, type) {
-    ebooking.assertTypeOf('string', name);
-    ebooking.assertTypeOf('string', type);
+smart.register_instant_hook = function (name, type) {
+    smart.assertTypeOf('string', name);
+    smart.assertTypeOf('string', type);
 
-    return ebooking.push_to_object_array(ebooking.config.instant_hooks, name, type);
+    return smart.push_to_object_array(smart.config.instant_hooks, name, type);
 };
 
 /**
@@ -149,8 +149,8 @@ ebooking.register_instant_hook = function (name, type) {
  * @param {String} name The hook name.
  * @param {String} type The hook type.
  */
-ebooking.is_instant_hook = function (name, type) {
-    return ebooking.is_in_object_array(ebooking.config.instant_hooks, name, type);
+smart.is_instant_hook = function (name, type) {
+    return smart.is_in_object_array(smart.config.instant_hooks, name, type);
 };
 
 /**
@@ -159,8 +159,8 @@ ebooking.is_instant_hook = function (name, type) {
  * @param {String} name The hook name.
  * @param {String} type The hook type.
  */
-ebooking.set_triggered_hook = function (name, type) {
-    return ebooking.push_to_object_array(ebooking.config.triggered_hooks, name, type);
+smart.set_triggered_hook = function (name, type) {
+    return smart.push_to_object_array(smart.config.triggered_hooks, name, type);
 };
 
 /**
@@ -169,14 +169,14 @@ ebooking.set_triggered_hook = function (name, type) {
  * @param {String} name The hook name.
  * @param {String} type The hook type.
  */
-ebooking.is_triggered_hook = function (name, type) {
-    return ebooking.is_in_object_array(ebooking.config.triggered_hooks, name, type);
+smart.is_triggered_hook = function (name, type) {
+    return smart.is_in_object_array(smart.config.triggered_hooks, name, type);
 };
 
-ebooking.register_instant_hook('init', 'system');
-ebooking.register_instant_hook('ready', 'system');
-ebooking.register_instant_hook('boot', 'system');
+smart.register_instant_hook('init', 'system');
+smart.register_instant_hook('ready', 'system');
+smart.register_instant_hook('boot', 'system');
 
-ebooking.trigger_hook('init', 'system');
-ebooking.trigger_hook('ready', 'system');
-ebooking.trigger_hook('boot', 'system');
+smart.trigger_hook('init', 'system');
+smart.trigger_hook('ready', 'system');
+smart.trigger_hook('boot', 'system');

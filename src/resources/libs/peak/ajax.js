@@ -1,5 +1,5 @@
-/*globals ebooking, $*/
-ebooking.provide('ebooking.ajax');
+/*globals peak, $*/
+peak.provide('peak.ajax');
 
 /**
  * @author Evan Winslow
@@ -8,21 +8,21 @@ ebooking.provide('ebooking.ajax');
 
 /**
  * Wrapper function for jQuery.ajax which ensures that the url being called
- * is relative to the ebooking site root.
+ * is relative to the peak site root.
  *
- * You would most likely use ebooking.get or ebooking.post, rather than this function
+ * You would most likely use peak.get or peak.post, rather than this function
  *
  * @param {string} url Optionally specify the url as the first argument
  * @param {Object} options Optional. {@link jQuery#ajax}
  * @return {jqXHR}
  */
-ebooking.ajax = function (url, options) {
-    options = ebooking.ajax.handleOptions(url, options);
+peak.ajax = function (url, options) {
+    options = peak.ajax.handleOptions(url, options);
 
-    options.url = ebooking.normalize_url(options.url);
+    options.url = peak.normalize_url(options.url);
 
     //Always display system messages after actions
-    var custom_complete = options.complete || ebooking.nullFunction;
+    var custom_complete = options.complete || peak.nullFunction;
     options.complete = function (json, two, three, four) {
         var responseText = {};
         try {
@@ -31,10 +31,10 @@ ebooking.ajax = function (url, options) {
         }
 
         if (responseText && responseText.messages) {
-            ebooking.register_error(responseText.messages.error);
-            ebooking.system_message(responseText.messages.success);
-            ebooking.register_info(responseText.messages.info);
-            ebooking.register_warning(responseText.messages.warning);
+            peak.register_error(responseText.messages.error);
+            peak.system_message(responseText.messages.success);
+            peak.register_info(responseText.messages.info);
+            peak.register_warning(responseText.messages.warning);
         }
 
         custom_complete(json, two, three, four);
@@ -45,12 +45,12 @@ ebooking.ajax = function (url, options) {
 /**
  * @const
  */
-ebooking.ajax.SUCCESS = 0;
+peak.ajax.SUCCESS = 0;
 
 /**
  * @const
  */
-ebooking.ajax.ERROR = -1;
+peak.ajax.ERROR = -1;
 
 
 /**
@@ -61,48 +61,48 @@ ebooking.ajax.ERROR = -1;
  * @return {Object}
  * @private
  */
-ebooking.ajax.handleOptions = function (url, options) {
+peak.ajax.handleOptions = function (url, options) {
     var data_only = true,
         data,
         member;
 
-    //ebooking.ajax('example/file.php', {...});
-    if (ebooking.isString(url)) {
+    //peak.ajax('example/file.php', {...});
+    if (peak.isString(url)) {
         options = options || {};
 
-        //ebooking.ajax({...});
+        //peak.ajax({...});
     } else {
         options = url || {};
         url = options.url;
     }
 
-    //ebooking.ajax('example/file.php', function() {...});
-    if (ebooking.isFunction(options)) {
+    //peak.ajax('example/file.php', function() {...});
+    if (peak.isFunction(options)) {
         data_only = false;
         options = {success: options};
     }
 
-    //ebooking.ajax('example/file.php', {data:{...}});
+    //peak.ajax('example/file.php', {data:{...}});
     if (options.data) {
         data_only = false;
     } else {
         for (member in options) {
-            //ebooking.ajax('example/file.php', {callback:function(){...}});
-            if (ebooking.isFunction(options[member])) {
+            //peak.ajax('example/file.php', {callback:function(){...}});
+            if (peak.isFunction(options[member])) {
                 data_only = false;
             }
         }
     }
 
-    //ebooking.ajax('example/file.php', {notdata:notfunc});
+    //peak.ajax('example/file.php', {notdata:notfunc});
     if (data_only) {
         data = options;
         options = {data: data};
     }
 
-    if (!ebooking.isFunction(options.error)) {
+    if (!peak.isFunction(options.error)) {
         // add a generic error handler
-        options.error = ebooking.ajax.handleAjaxError;
+        options.error = peak.ajax.handleAjaxError;
     }
 
     if (url) {
@@ -110,7 +110,7 @@ ebooking.ajax.handleOptions = function (url, options) {
     }
 
     var headers = {
-        'X-CSRF-TOKEN': ebooking.config.token || $('meta[name="csrf-token"]').attr('content')
+        'X-CSRF-TOKEN': peak.config.token || $('meta[name="csrf-token"]').attr('content')
     };
 
     options.headers = headers;
@@ -126,55 +126,55 @@ ebooking.ajax.handleOptions = function (url, options) {
  * @param error
  * @private
  */
-ebooking.ajax.handleAjaxError = function (xhr, status, error) {
+peak.ajax.handleAjaxError = function (xhr, status, error) {
     if (!xhr.getAllResponseHeaders()) {
         // user aborts (like refresh or navigate) do not have headers
         return;
     }
 
-    ebooking.register_error('ajax:error');
+    peak.register_error('ajax:error');
 };
 
 /**
- * Wrapper function for ebooking.ajax which forces the request type to 'get.'
+ * Wrapper function for peak.ajax which forces the request type to 'get.'
  *
  * @param {string} url Optionally specify the url as the first argument
  * @param {Object} options {@link jQuery#ajax}
  * @return {jqXHR}
  */
-ebooking.get = function (url, options) {
-    options = ebooking.ajax.handleOptions(url, options);
+peak.get = function (url, options) {
+    options = peak.ajax.handleOptions(url, options);
 
     options.type = 'get';
-    return ebooking.ajax(options);
+    return peak.ajax(options);
 };
 
 /**
- * Wrapper function for ebooking.get which forces the dataType to 'json.'
+ * Wrapper function for peak.get which forces the dataType to 'json.'
  *
  * @param {string} url Optionally specify the url as the first argument
  * @param {Object} options {@link jQuery#ajax}
  * @return {jqXHR}
  */
-ebooking.getJSON = function (url, options) {
-    options = ebooking.ajax.handleOptions(url, options);
+peak.getJSON = function (url, options) {
+    options = peak.ajax.handleOptions(url, options);
 
     options.dataType = 'json';
-    return ebooking.get(options);
+    return peak.get(options);
 };
 
 /**
- * Wrapper function for ebooking.ajax which forces the request type to 'post.'
+ * Wrapper function for peak.ajax which forces the request type to 'post.'
  *
  * @param {string} url Optionally specify the url as the first argument
  * @param {Object} options {@link jQuery#ajax}
  * @return {jqXHR}
  */
-ebooking.post = function (url, options) {
-    options = ebooking.ajax.handleOptions(url, options);
+peak.post = function (url, options) {
+    options = peak.ajax.handleOptions(url, options);
 
     options.type = 'post';
-    return ebooking.ajax(options);
+    return peak.ajax(options);
 };
 
 /**
@@ -184,23 +184,23 @@ ebooking.post = function (url, options) {
  * At its simplest, only the action name is required (and anything more than the
  * action name will be invalid).
  * <pre>
- * ebooking.action('name/of/action');
+ * peak.action('name/of/action');
  * </pre>
  *
  * The action can be relative to the current site ('name/of/action') or
- * the full URL of the action ('http://ebooking.org/action/name/of/action').
+ * the full URL of the action ('http://peak.org/action/name/of/action').
  *
  * @example Usage 2:
  * If you want to pass some data along with it, use the second parameter
  * <pre>
- * ebooking.action('friend/add', { friend: some_guid });
+ * peak.action('friend/add', { friend: some_guid });
  * </pre>
  *
  * @example Usage 3:
  * Of course, you will have no control over what happens when the request
  * completes if you do it like that, so there's also the most verbose method
  * <pre>
- * ebooking.action('friend/add', {
+ * peak.action('friend/add', {
  *     data: {
  *         friend: some_guid
  *     },
@@ -212,10 +212,10 @@ ebooking.post = function (url, options) {
  * You can pass any of your favorite $.ajax arguments into this second parameter.
  *
  * @note If you intend to use the second field in the "verbose" way, you must
- * specify a callback method or the data parameter.  If you do not, ebooking.action
+ * specify a callback method or the data parameter.  If you do not, peak.action
  * will think you mean to send the second parameter as data.
  *
- * @note You do not have to add security tokens to this request.  ebooking does that
+ * @note You do not have to add security tokens to this request.  peak does that
  * for you automatically.
  *
  * @see jQuery.ajax
@@ -224,16 +224,16 @@ ebooking.post = function (url, options) {
  * @param {Object} options
  * @return {jqXHR}
  */
-ebooking.action = function (action, options) {
-    ebooking.assertTypeOf('string', action);
+peak.action = function (action, options) {
+    peak.assertTypeOf('string', action);
 
     if (action.indexOf('ajax/action/') < 0) {
         action = 'ajax/action/' + action;
     }
-    options = ebooking.ajax.handleOptions(action, options);
+    options = peak.ajax.handleOptions(action, options);
     options.dataType = 'json';
 
-    return ebooking.post(options);
+    return peak.post(options);
 };
 
 /**
@@ -242,16 +242,16 @@ ebooking.action = function (action, options) {
  * @param options
  * @returns {jqXHR}
  */
-ebooking.view = function (view, options) {
-    ebooking.assertTypeOf('string', view);
+peak.view = function (view, options) {
+    peak.assertTypeOf('string', view);
 
     if (view.indexOf('ajax/view/') < 0)
         view = 'ajax/view/' + view;
 
-    options = ebooking.ajax.handleOptions(view, options);
+    options = peak.ajax.handleOptions(view, options);
     options.dataType = 'html';
 
-    return ebooking.get(options);
+    return peak.get(options);
 };
 
 /**
@@ -259,7 +259,7 @@ ebooking.view = function (view, options) {
  *
  * @example Usage:
  * <pre>
- * ebooking.api('system.api.list', {
+ * peak.api('system.api.list', {
  *     success: function(data) {
  *         console.log(data);
  *     }
@@ -270,19 +270,19 @@ ebooking.view = function (view, options) {
  * @param {Object} options {@link jQuery#ajax}
  * @return {jqXHR}
  */
-ebooking.api = function (method, options) {
-    ebooking.assertTypeOf('string', method);
+peak.api = function (method, options) {
+    peak.assertTypeOf('string', method);
 
     var defaults = {
         dataType: 'json',
         data: {}
     };
 
-    options = ebooking.ajax.handleOptions(method, options);
+    options = peak.ajax.handleOptions(method, options);
     options = $.extend(defaults, options);
 
     options.url = 'services/api/rest/' + options.dataType + '/';
     options.data.method = method;
 
-    return ebooking.ajax(options);
+    return peak.ajax(options);
 };

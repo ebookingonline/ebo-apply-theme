@@ -1,8 +1,8 @@
 {
-  "name": "e-booking/apply-theme",
+  "name": "smart/apply-theme",
   "description": "E-booking admin panel template",
   "type": "ebo-theme",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "ebo",
     "ebo-theme"
@@ -15,10 +15,10 @@
   ],
   "autoload": {
     "psr-4": {
-      "Ebooking\\Themes\\Apply\\": "src"
+      "Smart\\Themes\\Apply\\": "src"
     }
   },
   "extra": {
-    "bootstrap": "Ebooking\\Themes\\Apply\\Bootstrap"
+    "bootstrap": "Smart\\Themes\\Apply\\Bootstrap"
   }
 }

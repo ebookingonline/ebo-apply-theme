@@ -6,7 +6,7 @@
     | TIME   : 12:46 AM
     */
 
-    /** @var \Ebooking\Base\View $this */
+    /** @var \Smart\Base\View $this */
 
     include dirname(__DIR__) . '/elements/header.php';
 ?>

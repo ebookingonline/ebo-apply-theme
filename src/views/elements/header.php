@@ -31,16 +31,16 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
     <link rel="apple-touch-icon" href="<?= $themeUrl; ?>/images/paperplane.svg">
-    <meta name="apple-mobile-web-app-title" content="Ebooking">
+    <meta name="apple-mobile-web-app-title" content="Smart">
 
     <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="shortcut icon" sizes="196x196" href="<?= $themeUrl; ?>/images/paperplane.svg">
     <script>
-        var ebooking = ebooking || {};
-        ebooking.config = ebooking.config || {};
-        ebooking.config.wwwroot = '<?= $homeUrl ?>';
-        ebooking.config.tokenParam = '<?= Yii::$app->request->csrfParam; ?>';
-        ebooking.config.token = '<?= Yii::$app->request->csrfToken; ?>';
+        var smart = smart || {};
+        smart.config = smart.config || {};
+        smart.config.wwwroot = '<?= $homeUrl ?>';
+        smart.config.tokenParam = '<?= Yii::$app->request->csrfParam; ?>';
+        smart.config.token = '<?= Yii::$app->request->csrfToken; ?>';
     </script>
 </head>

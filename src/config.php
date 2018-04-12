@@ -10,7 +10,7 @@
     return [
         'layoutPath' => "{$viewsDir}/layouts",
         'components' => [
-            'applyTheme' => ['class' => "Ebooking\\Themes\\Apply\\Apply"],
+            'applyTheme' => ['class' => "Smart\\Themes\\Apply\\Apply"],
             'view'       => [
                 'theme' => [
                     'pathMap' => [

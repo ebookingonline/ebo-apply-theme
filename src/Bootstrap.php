@@ -6,14 +6,14 @@
     | TIME   : 11:56 PM
     */
 
-    namespace Ebooking\Themes\Apply;
+    namespace Smart\Themes\Apply;
 
     use yii\base\Application;
     use yii\base\BootstrapInterface;
 
     /**
      * Class Bootstrap
-     * @package Ebooking\Themes\Apply
+     * @package Smart\Themes\Apply
      */
     class Bootstrap implements BootstrapInterface
     {
@@ -25,7 +25,7 @@
         public function bootstrap($app)
         {
             // make apply theme class as singleton
-            \Yii::$container->setSingleton("Ebooking\\Themes\\Apply\\Apply");
+            \Yii::$container->setSingleton("Smart\\Themes\\Apply\\Apply");
 
             // add apply theme alias
             \Yii::setAlias('@apply-theme', __DIR__);

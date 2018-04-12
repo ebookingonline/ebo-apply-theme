@@ -6,7 +6,7 @@
     | TIME   : 11:27 PM
     */
 
-    namespace Ebooking\Themes\Apply;
+    namespace Smart\Themes\Apply;
 
     class Apply
     {
@@ -24,7 +24,7 @@
         const DIRECTION_RTL = 'rtl';
         const DIRECTION_LTR = 'ltr';
 
-        public $assetBundleClass = "Ebooking\\Themes\\Apply\\assets\\ApplyAssets";
+        public $assetBundleClass = "Smart\\Themes\\Apply\\assets\\ApplyAssets";
 
         /**
          * get asset bundle class object

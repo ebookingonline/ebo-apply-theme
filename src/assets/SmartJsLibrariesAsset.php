@@ -6,24 +6,24 @@
     | Time   : 22:59
     */
 
-    namespace Ebooking\Themes\Apply\assets;
+    namespace Smart\Themes\Apply\assets;
 
     use yii\web\AssetBundle;
 
     /**
-     * Class EbookingJsLibrariesAsset
+     * Class SmartJsLibrariesAsset
      *
-     * @package Ebooking\Themes\Apply\assets
+     * @package Smart\Themes\Apply\assets
      */
-    class EbookingJsLibrariesAsset extends AssetBundle
+    class SmartJsLibrariesAsset extends AssetBundle
     {
         // library js files
         public $js = [
-            'libs/ebooking/main.js',
-            'libs/ebooking/prototypes.js',
-            'libs/ebooking/PriorityList.js',
-            'libs/ebooking/hooks.js',
-            'libs/ebooking/ajax.js',
+            'libs/smart/main.js',
+            'libs/smart/prototypes.js',
+            'libs/smart/PriorityList.js',
+            'libs/smart/hooks.js',
+            'libs/smart/ajax.js',
         ];
 
         // dependencies

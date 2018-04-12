@@ -6,14 +6,14 @@
     | Time   : 01:11
     */
 
-    namespace Ebooking\Themes\Apply\assets;
+    namespace Smart\Themes\Apply\assets;
 
     use yii\web\AssetBundle;
 
     /**
      * Class ArabicFontSahel
      *
-     * @package Ebooking\Themes\Apply\assets
+     * @package Smart\Themes\Apply\assets
      */
     class ArabicFontSahel extends AssetBundle
     {

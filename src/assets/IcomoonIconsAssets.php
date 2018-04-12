@@ -6,7 +6,7 @@
     | Time   : 18:45
     */
 
-    namespace Ebooking\Themes\Apply\assets;
+    namespace Smart\Themes\Apply\assets;
 
     use yii\web\AssetBundle;
 
@@ -14,7 +14,7 @@
      * Ico moon icons asset bundle
      * Class IcomoonIconsAssets
      *
-     * @package Ebooking\Themes\Apply\assets
+     * @package Smart\Themes\Apply\assets
      */
     class IcomoonIconsAssets extends AssetBundle
     {

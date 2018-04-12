@@ -6,12 +6,12 @@
     | TIME   : 1:45 AM
     */
 
-    namespace Ebooking\Themes\Apply\assets;
+    namespace Smart\Themes\Apply\assets;
 
     /**
      * Class ErrorsPageAsset
      *
-     * @package Ebooking\Themes\Apply\assets
+     * @package Smart\Themes\Apply\assets
      */
     class ErrorsPageAsset extends ApplyAssets
     {
@@ -26,7 +26,7 @@
 
             // remove all dependencies
             $this->depends = [
-                "Ebooking\\Themes\\Apply\\assets\\PersianFontSahel",
+                "Smart\\Themes\\Apply\\assets\\PersianFontSahel",
                 "yii\\bootstrap\\BootstrapAsset",
             ];
         }
