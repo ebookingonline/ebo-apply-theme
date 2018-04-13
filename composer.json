@@ -15,7 +15,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Smart\\Themes\\Apply\\": "src"
+      "Smart\\Themes\\Apply\\": "src/"
     }
   },
   "extra": {
