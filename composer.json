@@ -1,11 +1,11 @@
 {
   "name": "smart/apply-theme",
   "description": "E-booking admin panel template",
-  "type": "ebo-theme",
+  "type": "smart-theme",
   "version": "1.0.1",
   "keywords": [
     "ebo",
-    "ebo-theme"
+    "smart-theme"
   ],
   "authors": [
     {

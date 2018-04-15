@@ -583,8 +583,8 @@ smart.push_to_object_array = function (object, parent, value) {
  * @param {*}      value  The value
  */
 smart.is_in_object_array = function (object, parent, value) {
-    peak.assertTypeOf('object', object);
-    peak.assertTypeOf('string', parent);
+    smart.assertTypeOf('object', object);
+    smart.assertTypeOf('string', parent);
 
     return typeof(object[parent]) != 'undefined' && $.inArray(value, object[parent]) >= 0;
 };
@@ -597,9 +597,9 @@ smart.is_in_object_array = function (object, parent, value) {
  * @param default_value
  * @returns {boolean|*}
  */
-peak.extract = function (nested, object, default_value) {
-    default_value = peak.isUndefined(default_value) ? false : default_value;
-    if (peak.isNullOrUndefined(nested))
+smart.extract = function (nested, object, default_value) {
+    default_value = smart.isUndefined(default_value) ? false : default_value;
+    if (smart.isNullOrUndefined(nested))
         return default_value;
 
     var default_ret = default_value, args = nested.split('.');
