@@ -30,16 +30,6 @@
                 <div class="flex hide-scroll">
                     <div class="scroll">
                         <div class="nav-border b-primary" data-nav="">
-                            <ul class="nav">
-                                <li class="nav-header">
-                                    <div class="py-3">
-                                        <a href="#" class="btn btn-sm success theme-accent btn-block">
-                                            <i class="fa fa-fw fa-plus"></i>
-                                            <span class="hidden-folded d-inline">New Project</span>
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
                             <ul class="nav bg">
                                 <?= $this->render('/layout/navigation/sidebar-menu'); ?>
                             </ul>
