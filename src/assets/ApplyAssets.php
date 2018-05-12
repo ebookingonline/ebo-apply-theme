@@ -27,6 +27,7 @@
             'libs/pace-progress/pace.min.js',
             'libs/pjax/pjax.js',
             'libs/notie/dist/notie.min.js',
+            'js/ajax.js',
 
             'js/nav.js'
         ];
