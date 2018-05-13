@@ -53,3 +53,20 @@ Custom css
 .dropdown-item.language-picker-item .language-picker-name{
     padding: 0 6px;
 }
+
+.content-main .p-2 {
+    padding: 1.2rem!important;
+}
+
+.form-group .control-label,
+.box .box-header,
+.box .box-body{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.cursor-pointer{
+    cursor: pointer!important;
+}
