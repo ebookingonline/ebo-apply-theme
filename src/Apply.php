@@ -32,13 +32,13 @@
          * @return array
          * @throws \Exception
          */
-        public function getAssetBundleConfig ()
+        public function getAssetBundleConfig()
         {
             return [
-                'direction' => \Yii::$app->services->locales->getCurrent()->getDir() ,
-                'theme'     => static::COLOR_PRIMARY ,
-                'color'     => static::COLOR_PRIMARY ,
-                'language'  => \Yii::$app->language ,
+                'direction' => \Yii::$app->services->locales->getCurrent()->getDir(),
+                'theme'     => static::COLOR_PRIMARY,
+                'color'     => static::COLOR_PRIMARY,
+                'language'  => \Yii::$app->language,
             ];
 
         }
@@ -47,11 +47,12 @@
          * override asset bundle class
          *
          * @param $class
+         *
          * @return $this
          */
-        public function setAssetBundleClass ($class)
+        public function setAssetBundleClass($class)
         {
-            if ( class_exists( $class ) ) {
+            if (class_exists($class)) {
                 $this->assetBundleClass = $class;
             }
             return $this;
@@ -63,13 +64,13 @@
          * @return \yii\web\AssetBundle
          * @throws \yii\base\InvalidConfigException
          */
-        public function register ()
+        public function register()
         {
             // configure asset
-            \Yii::$app->assetManager->bundles[ $this->assetBundleClass ] = $this->getAssetBundleConfig();
+            \Yii::$app->assetManager->bundles[$this->assetBundleClass] = $this->getAssetBundleConfig();
 
             // register bundle
-            $bundle = \Yii::$app->view->registerAssetBundle( $this->assetBundleClass );
+            $bundle = \Yii::$app->view->registerAssetBundle($this->assetBundleClass);
 
             // return object
             return $bundle;
