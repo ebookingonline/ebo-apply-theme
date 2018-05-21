@@ -51,16 +51,22 @@ smart.admin.switchUi = function () {
                 smart.action(action, {
                     data: data,
                     beforeSend: function () {
-                        
+                        $checkbox.addClass('disabled');
                     },
                     complete: function () {
+                        $checkbox.removeClass('disabled');
                     },
                     success: function (res) {
                         var checked = smart.extract('output.result', res, old);
                         if (old !== checked)
-                            $(self).prop('checked', !old);
+                            this.revert(!old);
                     },
                     error: function () {
+                        console.log('Error');
+                        this.revert(!$(self).prop('checked'))
+                    },
+                    revert: function (to) {
+                        $(self).prop('checked', to);
                     }
                 });
                 return;

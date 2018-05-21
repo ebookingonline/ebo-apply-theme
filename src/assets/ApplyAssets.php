@@ -20,7 +20,8 @@
 
         public $css = [
             'css/app.css',
-            'libs/notie/dist/notie.css'
+            'libs/notie/dist/notie.css',
+            'css/style.css'
         ];
 
         public $js = [
