@@ -70,3 +70,7 @@ Custom css
 .cursor-pointer{
     cursor: pointer!important;
 }
+
+.ui-switch{
+    text-align: initial!important;
+}
