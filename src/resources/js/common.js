@@ -16,7 +16,9 @@ smart.admin.switchUi = function () {
             type = $checkbox.attr('data-type'),
             size = $checkbox.attr('data-size'),
             action = $checkbox.attr('data-action'),
-            rel = $checkbox.attr('data-rel');
+            rel = $checkbox.attr('data-rel'),
+            color = $checkbox.attr('data-color'),
+            handler = $checkbox.attr('data-handler');
 
         // switch size
         if (size === 'medium') {
@@ -27,10 +29,18 @@ smart.admin.switchUi = function () {
             size = '';
         }
 
+        // default color
+        if (!color)
+            color = 'blue';
+
+        // check handler
+        if (!handler || !(-1 === $.inArray(['ui-switch', 'md-switch'])))
+            handler = 'md-switch';
+
         // initialize switch ui
         $checkbox.wrap('<label></label>');
-        var $label = $checkbox.closest('label').addClass('ui-switch').addClass(size);
-        $label.append($('<i>'));
+        var $label = $checkbox.closest('label').addClass(handler).addClass(size);
+        $label.append($('<i>').addClass(color));
 
         $checkbox.on('change', function () {
             // run action if action exists else trigger hook
@@ -51,10 +61,10 @@ smart.admin.switchUi = function () {
                 smart.action(action, {
                     data: data,
                     beforeSend: function () {
-                        $checkbox.addClass('disabled');
+                        $checkbox.closest('label').addClass('disabled');
                     },
                     complete: function () {
-                        $checkbox.removeClass('disabled');
+                        $checkbox.closest('label').removeClass('disabled');
                     },
                     success: function (res) {
                         var checked = smart.extract('output.result', res, old);
