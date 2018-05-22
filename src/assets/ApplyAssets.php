@@ -20,13 +20,15 @@
 
         public $css = [
             'css/app.css',
-            'libs/notie/dist/notie.css'
+            'libs/notie/dist/notie.css',
+            'css/style.css'
         ];
 
         public $js = [
             'libs/pace-progress/pace.min.js',
             //'libs/pjax/pjax.js',
             'libs/notie/dist/notie.min.js',
+            'js/common.js',
             //'js/ajax.js',
 
             'js/lazyload.js',
