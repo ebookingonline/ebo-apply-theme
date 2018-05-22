@@ -29,6 +29,11 @@
             'libs/notie/dist/notie.min.js',
             //'js/ajax.js',
 
+            'js/lazyload.js',
+            'js/lazyload.config.js',
+            'js/plugin.js',
+            'js/app.js',
+
             'js/nav.js'
         ];
 
