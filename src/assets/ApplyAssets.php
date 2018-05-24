@@ -43,6 +43,7 @@
             "yii\\web\\JqueryAsset",
             "yii\\bootstrap\\BootstrapAsset",
             "Smart\\Themes\\Apply\\assets\\IcomoonIconsAssets",
+            "Smart\\Themes\\Apply\\assets\\GlyphIconsAssets",
             "Smart\\Themes\\Apply\\assets\\SmartJsLibrariesAsset"
         ];
 
