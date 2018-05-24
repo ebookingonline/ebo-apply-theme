@@ -70,7 +70,15 @@ Custom css
 .cursor-pointer{
     cursor: pointer!important;
 }
-
+.card-header{
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+    border: 1px solid #e5e5e5;
+    border-bottom: 2px solid #ccc;
+    background: #f5f5f5;
+}
+.card {
+    border-bottom: 2px solid #e1e1e1;
+}
 .ui-switch{
     text-align: initial!important;
 }
