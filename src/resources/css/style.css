@@ -356,3 +356,6 @@ form, .carousel, .form-horizontal .control-group, .nav-tabs, .alert, .panel, .pr
     border-color: rgba(120, 130, 140, 0.065);
     background: #e5fff6;
 }
+.custom-select, .custom-file-control, .custom-file-control:before, select.form-control:not([size]):not([multiple]):not(.form-control-lg):not(.form-control-sm) {
+    height: calc(2.25rem + -2px) ;
+}

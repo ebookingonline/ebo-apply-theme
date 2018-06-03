@@ -20,6 +20,7 @@
 
         public $css = [
             'css/app.css',
+            'css/plugins/jquery.autocomplete.css',
             'libs/notie/dist/notie.css',
             'css/style.css'
         ];
@@ -30,6 +31,7 @@
             'libs/notie/dist/notie.min.js',
             'js/common.js',
             //'js/ajax.js',
+            'js/plugins/jquery.autocomplete.min.js',
 
             'js/lazyload.js',
             'js/lazyload.config.js',

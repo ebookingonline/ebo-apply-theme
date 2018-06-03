@@ -113,7 +113,10 @@ var MODULE_CONFIG = {
                       '../libs/jqvmap/dist/maps/jquery.vmap.usa.js',
                       '../libs/jqvmap/dist/maps/jquery.vmap.france.js',
                       'scripts/plugins/jqvmap.js'
-                    ]
+                    ],
+    autocomplete:        [
+        'plugins/jquery.autocomplete.min.js'
+    ]
   };
 
 var MODULE_OPTION_CONFIG = {
