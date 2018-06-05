@@ -13,6 +13,11 @@ smart.global = this;
 
 
 /**
+ * Ensure smart.config object
+ */
+smart.config = smart.config || {};
+
+/**
  * Convenience reference to an empty function.
  *
  * Save memory by not generating multiple empty functions.
@@ -251,6 +256,25 @@ smart.provide = function (pkg, opt_context) {
 smart.inherit = function (Child, Parent) {
     Child.prototype = new Parent();
     Child.prototype.constructor = Child;
+};
+
+/**
+ * register smart config objects
+ * @param config
+ */
+smart.config.register = function (config = {}) {
+    smart.assertTypeOf('object', config);
+    $.extend(smart.config, config);
+};
+
+/**
+ * return config value from smart config
+ * @param nested
+ * @param defaultValue
+ * @returns {boolean|*}
+ */
+smart.config.get = function (nested, defaultValue = null) {
+    return smart.extract(nested, smart.config, defaultValue);
 };
 
 /**
