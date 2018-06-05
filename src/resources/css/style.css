@@ -338,3 +338,24 @@ form, .carousel, .form-horizontal .control-group, .nav-tabs, .alert, .panel, .pr
     pointer-events: none;
     opacity: 0.4;
 }
+
+.form-group.has-success .form-control:focus {
+    border-color: #28a745!important;
+}
+.form-group.has-error .form-control:focus {
+    border-color: #900!important;
+}
+.form-group:not(.has-success):not(.has-error) .form-control:focus {
+    border-color: #53a6fa !important;
+}
+.table.table-striped thead{
+    border-bottom: 2px solid #6a8cbf;
+    box-shadow: inset 0 -5px 3px #f4f9ff;
+}
+.table.table-striped > thead > tr > th {
+    border-color: rgba(120, 130, 140, 0.065);
+    background: #e5fff6;
+}
+.custom-select, .custom-file-control, .custom-file-control:before, select.form-control:not([size]):not([multiple]):not(.form-control-lg):not(.form-control-sm) {
+    height: calc(2.25rem + -2px) ;
+}
