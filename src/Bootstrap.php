@@ -44,7 +44,7 @@
                         if (!is_array($app->{$item})) {
                             $app->{$item} = $value;
                         } else {
-                            $app->{$item} = array_merge_recursive($app->{$item}, $value);
+                            $app->{$item} = array_merge_recursive_distinct($app->{$item}, $value);
                         }
                     }
                 }
