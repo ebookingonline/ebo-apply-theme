@@ -3,6 +3,7 @@ smart.provide('smart.admin');
 smart.admin.ready = function () {
     // initialize switchery elements
     smart.admin.switchUi();
+    smart.select2();
 };
 
 /**
@@ -93,6 +94,28 @@ smart.admin.switchUi = function () {
     });
 };
 
+/**
+ * initialize select2
+ */
+smart.select2 = function(){
+    var select = $('[data-widget="select2"]:not([data-select2])');
+    select.each(function(index, item){
+        var options = $(item).data('options');
+        //Init
+        select.select2(options);
+
+        //Events
+        var events = $(item).data('events');
+        $.each(events, function(index, event){
+            $(item).on('select2:'+event.name, function (e) {
+                // Do something
+                eval(event.callback);
+            });
+        });
+    });
+}
+
 // register hook handlers
 smart.register_hook_handler('switchery', 'admin', smart.admin.switchUi);
 smart.register_hook_handler('ready', 'system', smart.admin.ready);
+smart.register_hook_handler('select2', 'admin', smart.select2);

@@ -21,6 +21,7 @@
         public $css = [
             'css/app.css',
             'css/plugins/jquery.autocomplete.css',
+            'css/plugins/select2.min.css',
             'libs/notie/dist/notie.css',
             'css/style.css'
         ];
@@ -29,10 +30,12 @@
             'libs/pace-progress/pace.min.js',
             //'libs/pjax/pjax.js',
             'libs/notie/dist/notie.min.js',
-            'js/common.js',
+
             //'js/ajax.js',
             'js/plugins/jquery.autocomplete.min.js',
+            'js/plugins/select2/select2.full.min.js',
 
+            'js/common.js',
             'js/lazyload.js',
             'js/lazyload.config.js',
             'js/plugin.js',

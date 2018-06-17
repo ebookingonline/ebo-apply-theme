@@ -82,3 +82,6 @@ Custom css
 .ui-switch{
     text-align: initial!important;
 }
+.card-body a{
+    color: #0567bb;
+}
