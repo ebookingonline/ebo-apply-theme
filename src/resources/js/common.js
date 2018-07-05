@@ -4,6 +4,7 @@ smart.admin.ready = function () {
     // initialize switchery elements
     smart.admin.switchUi();
     smart.select2();
+    smart.addActiveClass();
 };
 
 /**
@@ -112,6 +113,21 @@ smart.select2 = function(){
                 eval(event.callback);
             });
         });
+    });
+}
+
+smart.addActiveClass = function(){
+    /*var pgurl = window.location.href.substr(window.location.href
+        .lastIndexOf("/")+1);*/
+    pgurl = window.location.pathname;
+    $(".nav li").each(function(){
+        $("a").each(function(){
+            if($(this).attr("href") == pgurl || $(this).attr("href") == '' ){
+                $(this).addClass("active");
+                $(this).parent().addClass("active");
+            }
+        })
+
     });
 }
 
