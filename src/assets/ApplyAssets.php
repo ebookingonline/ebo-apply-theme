@@ -36,6 +36,9 @@
             'js/plugins/select2/select2.full.min.js',
             'js/plugins/tinymce/tinymce.min.js',
             'js/plugins/tinymce/jquery.tinymce.min.js',
+            'js/plugins/list.min.js',
+
+            'js/app/mail.js',
 
             'js/common.js',
             'js/lazyload.js',
