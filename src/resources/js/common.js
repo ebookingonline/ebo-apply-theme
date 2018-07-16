@@ -4,6 +4,7 @@ smart.admin.ready = function () {
     // initialize switchery elements
     smart.admin.switchUi();
     smart.select2();
+    smart.autocomplete();
     smart.addActiveClass();
     smart.editor();
 };
@@ -103,8 +104,10 @@ smart.select2 = function () {
     var select = $('[data-widget="select2"]:not([data-select2])');
     select.each(function (index, item) {
         var options = $(item).data('options');
+        options.ajax.data = eval(options.ajax.data);//change string to function
+        options.ajax.processResults = eval(options.ajax.processResults);//change string to function
         //Init
-        select.select2(options);
+        $(item).select2(options);
 
         //Events
         var events = $(item).data('events');
@@ -182,8 +185,21 @@ smart.editor = function(){
     });
 }
 
+smart.autocomplete = function () {
+    var inputs = $('[data-widget="autocomplete"]:not([data-autocomplete])');
+    inputs.each(function (index, item) {
+        var options = $(item).data('options');
+        options.transformResult = eval(options.transformResult); //change string to function
+
+        //Init
+        $(item).autocomplete(options);
+
+    });
+}
+
 // register hook handlers
 smart.register_hook_handler('switchery', 'admin', smart.admin.switchUi);
 smart.register_hook_handler('ready', 'system', smart.admin.ready);
 smart.register_hook_handler('select2', 'admin', smart.select2);
 smart.register_hook_handler('editor', 'admin', smart.editor);
+smart.register_hook_handler('autocomplete', 'admin', smart.editor);
