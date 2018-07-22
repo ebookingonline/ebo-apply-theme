@@ -63,13 +63,13 @@ window.mail = {};
 
   function update(list){
     if(!list.filter) return;
-    list.filter(function (item) {
+    /*list.filter(function (item) {
       if (item.values().tag.indexOf(tagFilter) >= 0) {
          return true;
       } else {
          return false;
       }
-    });
+    });*/
 
     list.update();
     $(list_el+' .list').removeClass('hide').addClass('animate fadeIn');
@@ -82,7 +82,7 @@ window.mail = {};
   var init = function(){
     $(document).trigger('refresh');
     
-    // nav
+    /*// nav
     navList = new List(nav_el.substr(1), {
       listClass: 'nav',
       item: '<li><a href class="link"><span class="nav-text name"></span></a></li>',
@@ -90,7 +90,7 @@ window.mail = {};
         'name',
         { name: 'link', attr: 'href' }
       ]
-    });
+    });*/
 
     // list
     if( $(list_el).length ){
@@ -98,9 +98,8 @@ window.mail = {};
           valueNames: [
             'item-title',
             'item-except',
-            'tag'
           ],
-          page: 10,
+          page: 7,
           pagination: true
       });
 
@@ -118,7 +117,7 @@ window.mail = {};
     }
 
     if(!noticed){
-      notie.alert({ text: 'Try add some labels' });
+      //notie.alert({ text: 'Try add some labels' });
       noticed = true;
     }
 
@@ -128,3 +127,9 @@ window.mail = {};
   list.init = init;
 
 })(jQuery, window.mail);
+
+window.mail.init();
+
+
+
+

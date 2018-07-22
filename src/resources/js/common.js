@@ -4,6 +4,9 @@ smart.admin.ready = function () {
     // initialize switchery elements
     smart.admin.switchUi();
     smart.select2();
+    smart.autocomplete();
+    smart.addActiveClass();
+    smart.editor();
 };
 
 /**
@@ -97,21 +100,100 @@ smart.admin.switchUi = function () {
 /**
  * initialize select2
  */
-smart.select2 = function(){
+smart.select2 = function () {
     var select = $('[data-widget="select2"]:not([data-select2])');
-    select.each(function(index, item){
+    select.each(function (index, item) {
         var options = $(item).data('options');
+        options.ajax.data = eval(options.ajax.data);//change string to function
+        options.ajax.processResults = eval(options.ajax.processResults);//change string to function
         //Init
-        select.select2(options);
+        $(item).select2(options);
 
         //Events
         var events = $(item).data('events');
-        $.each(events, function(index, event){
-            $(item).on('select2:'+event.name, function (e) {
-                // Do something
-                eval(event.callback);
-            });
+        var init;
+        $.each(events, function (index, event) {
+            if (event.name === 'init') {
+                init = eval(event.callback);
+            } else {
+                $(item).on('select2:' + event.name, function (e) {
+                    // Do something
+                    eval(event.callback);
+                });
+            }
         });
+        if (typeof init === 'function')
+            init();
+    });
+}
+
+/**
+ * add "active" class for current url in navigation menus
+ */
+smart.addActiveClass = function () {
+    /*var pgurl = window.location.href.substr(window.location.href
+        .lastIndexOf("/")+1);*/
+    pgurl = window.location.pathname;
+    $(".nav li").each(function () {
+        $("a").each(function () {
+            if ($(this).attr("href") == pgurl || $(this).attr("href") == '') {
+                $(this).addClass("active");
+                $(this).parent().addClass("active");
+            }
+        })
+
+    });
+}
+
+
+/**
+ * initialize Tinymce editor
+ */
+smart.editor = function(){
+    var defaultOptions = {
+        "plugins":[
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak","searchreplace visualblocks visualchars code fullscreen",
+            "insertdatetime media nonbreaking save table contextmenu directionality",
+            "template paste textcolor"],
+        "toolbar_items_size":"medium",
+        "toolbar":"undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code fullscreen",
+        "formats":{
+            "alignleft":{
+                "selector":"p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img",
+                "classes":"align-left"
+            },
+            "aligncenter":{
+                "selector":"p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img",
+                "classes":"align-center"
+            },
+            "alignright":{
+                "selector":"p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img",
+                "classes":"align-right"
+            }
+        },
+        "relative_urls":false,
+        "remove_script_host":false
+    };
+
+    var editor = $('[data-widget="editor"]:not([data-editor])');
+    editor.each(function (index, item) {
+        var options = $(item).data('options');
+
+        var settings = $.extend({}, defaultOptions, options);
+        //Init
+        editor = editor.tinymce(settings);
+    });
+}
+
+smart.autocomplete = function () {
+    var inputs = $('[data-widget="autocomplete"]:not([data-autocomplete])');
+    inputs.each(function (index, item) {
+        var options = $(item).data('options');
+        options.transformResult = eval(options.transformResult); //change string to function
+
+        //Init
+        $(item).autocomplete(options);
+
     });
 }
 
@@ -119,3 +201,5 @@ smart.select2 = function(){
 smart.register_hook_handler('switchery', 'admin', smart.admin.switchUi);
 smart.register_hook_handler('ready', 'system', smart.admin.ready);
 smart.register_hook_handler('select2', 'admin', smart.select2);
+smart.register_hook_handler('editor', 'admin', smart.editor);
+smart.register_hook_handler('autocomplete', 'admin', smart.editor);
