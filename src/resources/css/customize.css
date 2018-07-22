@@ -22,12 +22,12 @@ Custom css
     padding: 0.20rem 0;
 }
 
-.sidenav .nav-icon{
+.sidenav .nav-icon {
     height: 1.8rem;
     width: 2rem;
 }
 
-.sidenav .nav li > a{
+.sidenav .nav li > a {
     padding: 0 0.8rem;
 }
 
@@ -46,42 +46,50 @@ Custom css
     text-align: center;
 }
 
-.dropdown-item.language-picker-item{
-    padding: 0.25rem 0.8rem!important;
+.dropdown-item.language-picker-item {
+    padding: 0.25rem 0.8rem !important;
 }
 
-.dropdown-item.language-picker-item .language-picker-name{
+.dropdown-item.language-picker-item .language-picker-name {
     padding: 0 6px;
 }
 
 .content-main .p-2 {
-    padding: 1.2rem!important;
+    padding: 1.2rem !important;
 }
 
 .form-group .control-label,
 .box .box-header,
-.box .box-body{
+.box .box-body {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
 
-.cursor-pointer{
-    cursor: pointer!important;
+.cursor-pointer {
+    cursor: pointer !important;
 }
-.card-header{
+
+.card-header {
     border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
     border: 1px solid #e5e5e5;
     border-bottom: 2px solid #ccc;
     background: #f5f5f5;
 }
+
 .card {
     border-bottom: 2px solid #e1e1e1;
 }
-.ui-switch{
-    text-align: initial!important;
+
+.ui-switch {
+    text-align: initial !important;
 }
-.card-body a{
+
+.card-body a {
     color: #0567bb;
+}
+
+.nav-sub {
+    max-height: 50rem !important;
 }

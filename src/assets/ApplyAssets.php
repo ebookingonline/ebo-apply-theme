@@ -39,9 +39,7 @@
             'js/lazyload.js',
             'js/lazyload.config.js',
             'js/plugin.js',
-            'js/app.js',
-
-            'js/nav.js'
+            'js/app.js'
         ];
 
         public $depends = [
