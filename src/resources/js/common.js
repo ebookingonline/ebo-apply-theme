@@ -104,8 +104,10 @@ smart.select2 = function () {
     var select = $('[data-widget="select2"]:not([data-select2])');
     select.each(function (index, item) {
         var options = $(item).data('options');
-        options.ajax.data = eval(options.ajax.data);//change string to function
-        options.ajax.processResults = eval(options.ajax.processResults);//change string to function
+        if(typeof(options.ajax) !== 'undefined') {
+            options.ajax.data = eval(options.ajax.data);//change string to function
+            options.ajax.processResults = eval(options.ajax.processResults);//change string to function
+        }
         //Init
         $(item).select2(options);
 
