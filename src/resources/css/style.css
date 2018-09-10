@@ -192,7 +192,20 @@ Custom css
     margin: 0px 1px 0 1px
 }
 
+.panel-heading .nav-tabs > li > a.active, .panel-heading .nav-tabs > li > a.active:hover, .panel-heading .nav-tabs > li > a.active:focus {
+    background: #fff;
+    border-width: 0 1px;
+    border-color: #ddd;
+    margin: 0px 1px 0 1px
+}
+
 .nav-tabs > li.active > a {
+    border: 1px solid #099;
+    border-bottom: 1px solid #ffffff !important;
+    border-top: 2px solid #bbbbbb !important;
+}
+
+.nav-tabs>li>a.active {
     border: 1px solid #099;
     border-bottom: 1px solid #ffffff !important;
     border-top: 2px solid #bbbbbb !important;
