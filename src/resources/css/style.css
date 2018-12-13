@@ -372,3 +372,65 @@ form, .carousel, .form-horizontal .control-group, .nav-tabs, .alert, .panel, .pr
 .custom-select, .custom-file-control, .custom-file-control:before, select.form-control:not([size]):not([multiple]):not(.form-control-lg):not(.form-control-sm) {
     height: calc(2.25rem + -2px) ;
 }
+.item-title {
+    border-bottom: 2px solid #eee;
+    padding: 10px 0;
+    margin: 0 0 25px;
+}
+.bg-1{
+    background: #eee;
+}
+
+.box-style1 {
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 3px 8px #eee;
+    margin-bottom: 25px;
+}
+.box-style1 .footer{
+    background: #f5f5f5;
+    border-bottom: 1px solid #e1e1e1;
+}
+.box-style1 .footer > *{
+    padding: 8px 15px 8px 15px !important;
+}
+.box-style1 .footer .button {
+    padding: 8px 15px;
+    text-align: center;
+    transition: all 0.3s;
+}
+.box-style1 .footer .button.add {
+    background: transparent;
+    color: #26b39a;
+}
+.box-style1 .footer .button.add:hover {
+    background: #36e2cc;
+    color: #fff;
+}
+.box-style1 .footer .button.info {
+    background: transparent;
+    color: #dcb007;
+}
+.box-style1 .footer .button.info:hover {
+    background: #dcb007;
+    color: #fff;
+    cursor: default;
+}
+.box-style1 .module-icon {
+    /*background: #f3f3f3;*/
+    margin: 0 -15px 15px;
+}
+.box-style1 .footer .button.remove {
+    color: #e22a5c;
+}
+.box-style1 .footer .button.remove:hover {
+    color: #fff;
+    background: #e22a5c;
+}
+
+.box-style1 .box-body.installed{
+    background: linear-gradient(to bottom, #edfff8 10%, #fff 80%);
+}
+.box-style1:hover {
+    box-shadow: 0 8px 25px #eee;
+}
