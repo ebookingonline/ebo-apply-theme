@@ -314,3 +314,22 @@ body {
   border-bottom-right-radius: 0;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem; }
+
+h1{
+  font-size: 22px;
+}
+h2{
+  font-size: 20px;
+}
+h3{
+  font-size: 18px;
+}
+h4{
+  font-size: 17px;
+}
+h5{
+  font-size: 16px;
+}
+h6{
+  font-size: 15px;
+}
